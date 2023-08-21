@@ -1,6 +1,4 @@
-// backend/src/songs/songs.controller.ts
-
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Post, Body } from '@nestjs/common';
 import { SongsService } from './songs.service';
 import { Song } from '../entities/song.entity';
 
@@ -11,5 +9,10 @@ export class SongsController {
   @Get()
   async findAll(): Promise<Song[]> {
     return this.songsService.findAll();
+  }
+
+  @Post() // New POST endpoint
+  async createSong(@Body() songData: Song): Promise<Song> {
+    return this.songsService.createSong(songData);
   }
 }
