@@ -1,5 +1,3 @@
-// thing-or-two-techincal-assessment/backend/src/songs/songs.module.ts
-
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { SongsController } from './songs.controller';

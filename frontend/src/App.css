@@ -1,0 +1,54 @@
+.app {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+  margin: auto;
+}
+
+.app__file-input {
+  margin-bottom: 10px;
+}
+
+.app__post-button,
+.app__file-label {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border: none;
+  border-radius: 5px;
+}
+
+.app__post-button:hover,
+.app__file-label:hover {
+  background-color: #0056b3;
+}
+
+.app__song-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+  background-color: #f4f4f4;
+}
+
+.app__table-head {
+  background-color: #007bff;
+  color: white;
+}
+
+.app__table-row {
+  border-bottom: 1px solid #ddd;
+}
+
+.app__table-header,
+.app__table-cell {
+  padding: 10px;
+  text-align: left;
+}
+
+@media (min-width: 768px) {
+  .app {
+    max-width: 50%;
+  }
+}

@@ -1,5 +1,3 @@
-//  thing-or-two-techincal-assessment/backend/src/songs/songs.controller.ts
-
 import { Controller, Get, Post, Body } from '@nestjs/common';
 import { SongsService } from './songs.service';
 import { Song } from '../entities/song.entity';
