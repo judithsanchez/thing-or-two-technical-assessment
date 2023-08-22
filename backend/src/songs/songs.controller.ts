@@ -12,7 +12,7 @@ export class SongsController {
   }
 
   @Post('add')
-  async createSong(@Body() songData: Song): Promise<Song> {
-    return this.songsService.createSong(songData);
+  async createSongs(@Body() songData: Song[]): Promise<Song[]> {
+    return this.songsService.createSongs(songData);
   }
 }

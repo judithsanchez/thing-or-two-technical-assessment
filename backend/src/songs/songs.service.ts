@@ -14,8 +14,15 @@ export class SongsService {
     return this.songRepository.find();
   }
 
-  async createSong(songData: Song): Promise<Song> {
-    const newSong = this.songRepository.create(songData);
-    return this.songRepository.save(newSong);
+  async createSongs(songData: Song[]): Promise<Song[]> {
+    for (let s = 0; s < songData.length; s++) {
+      const song = songData[s];
+      if ((await this.songRepository.findOneBy(song)) === null) {
+        const newSong = this.songRepository.create(song);
+        this.songRepository.save(newSong);
+      }
+    }
+
+    return this.songRepository.find();
   }
 }

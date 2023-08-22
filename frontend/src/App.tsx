@@ -8,6 +8,8 @@ function App() {
   const fetchSongData = async () => {
     try {
       const response = await fetch('http://localhost:3000/songs/');
+      // const response = await fetch('/songs/');
+
       const data = await response.json();
       setSongData(data);
     } catch (error) {
@@ -55,6 +57,7 @@ function App() {
   const postSongsToDatabase = async () => {
     try {
       const response = await fetch('http://localhost:3000/songs/add', {
+        // const response = await fetch('/songs/add', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
