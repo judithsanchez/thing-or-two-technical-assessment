@@ -2,33 +2,37 @@ import React, { useState } from 'react';
 import './App.css';
 
 function App() {
-  const [parsedData, setParsedData] = useState<any[]>([]); // State to hold parsed CSV data
+  // State to hold the parsed data from CSV
+  const [parsedData, setParsedData] = useState<any[]>([]);
 
+  // Function to handle file upload
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0]; // Get the selected file
-
+    const file = event.target.files?.[0];
     if (file) {
       processCSV(file);
     }
   };
 
+  // Function to process the uploaded CSV file
   const processCSV = (file: File) => {
     const reader = new FileReader();
 
     reader.onload = (e: ProgressEvent<FileReader>) => {
       const text = e.target?.result as string;
-      const lines = text.split('\n'); // Split text into lines
+      const lines = text.split('\n');
 
+      // Parse each line into an object
       const parsedData = lines.map((line) => {
-        const [song_name, band, year] = line.split(','); // Split line into values
+        const [song_name, band, year] = line
+          .split(';')
+          .map((value) => value.trim());
+
         return { song_name, band, year };
       });
 
-      // Remove the header row
-      parsedData.shift();
+      parsedData.shift(); // Remove header line
 
-      // Update state with the parsed data
-      setParsedData(parsedData);
+      setParsedData(parsedData); // Update state with parsed data
     };
 
     reader.readAsText(file);

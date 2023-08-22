@@ -1,14 +1,6 @@
 //  thing-or-two-techincal-assessment/backend/src/songs/songs.controller.ts
-import { FileInterceptor } from '@nestjs/platform-express';
 
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  UploadedFile,
-  UseInterceptors,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body } from '@nestjs/common';
 import { SongsService } from './songs.service';
 import { Song } from '../entities/song.entity';
 
@@ -21,11 +13,8 @@ export class SongsController {
     return this.songsService.findAll();
   }
 
-  @Post('upload')
-  @UseInterceptors(FileInterceptor('file'))
-  async uploadCsv(@UploadedFile() file: Express.Multer.File): Promise<string> {
-    console.log('Received file:', file);
-    const result = await this.songsService.uploadCsv(file);
-    return result;
+  @Post('add')
+  async createSong(@Body() songData: Song): Promise<Song> {
+    return this.songsService.createSong(songData);
   }
 }
