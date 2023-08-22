@@ -1,4 +1,4 @@
-// backend/src/entities/song.entity.ts
+// thing-or-two-techincal-assessment/backend/src/entities/song.entity.ts
 
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 

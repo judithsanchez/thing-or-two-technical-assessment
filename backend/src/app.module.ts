@@ -1,5 +1,9 @@
+//  thing-or-two-techincal-assessment/backend/src/app.module.ts
+
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { MulterModule } from '@nestjs/platform-express'; // Import MulterModule
+
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { SongsController } from './songs/songs.controller';
@@ -19,6 +23,9 @@ import { Song } from './entities/song.entity';
       // entities: [__dirname + '/**/*.entity{.ts,.js}'], // path to your entity classes
       entities: [Song],
       synchronize: true, // automatic schema synchronization
+    }),
+    MulterModule.register({
+      dest: './uploads', // Specify the destination folder for uploaded files
     }),
     SongsModule,
   ],
